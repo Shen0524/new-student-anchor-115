@@ -8,6 +8,7 @@ type EventItem = {
   title: string;
   tags: string[];
   note: string;
+  link?: { label: string; href: string };
   category: "learning" | "global" | "community" | "career" | "break";
 };
 
@@ -35,7 +36,7 @@ const days: Record<"day1" | "day2", { title: string; place: string; events: Even
       { time: "10:20", duration: "100 分鐘", title: "英文能力前測", tags: ["0623 教室"], note: "掌握自己的英文能力起點。", category: "learning" },
       { time: "12:00", duration: "60 分鐘", title: "午休時間", tags: ["休息・充電"], note: "為下午的實作體驗補充能量。", category: "break" },
       { time: "13:00", duration: "130 分鐘", title: "一機搞定・吃出健康", tags: ["王玲惠主廚", "中餐教室"], note: "動手操作的健康飲食實作課。", category: "learning" },
-      { time: "15:20", duration: "30 分鐘", title: "校園導覽", tags: ["認識校園"], note: "熟悉未來四年的學習與生活場域。", category: "community" },
+      { time: "15:20", duration: "30 分鐘", title: "校園導覽", tags: ["認識校園"], note: "認識校園，展開互動探險。", link: { label: "校園探險隊", href: "https://apex-night-racer.dr-shen.chatgpt.site/" }, category: "community" },
       { time: "16:00", duration: "50 分鐘", title: "小小實驗室・哇啊哇!!", tags: ["張雲菁老師", "實驗室"], note: "認識老師的研究領域，探索未來專題與研究機會。", category: "learning" },
       { time: "16:50", duration: "10 分鐘", title: "學涯定錨探索課程・後測", tags: ["沈祐成主任"], note: "回看兩天旅程，為大學生活超前部署。", category: "learning" },
     ],
@@ -82,7 +83,10 @@ export default function Home() {
             <article className={`event category-${event.category}`} key={`${selectedDay}-${event.time}`}>
               <div className="time">{event.time}<span className="duration">{event.duration}</span></div>
               <div><h3>{event.title}</h3><div className="meta">{event.tags.map((tag) => <span className="chip" key={tag}>{tag}</span>)}</div></div>
-              <div className="note">{event.note}</div>
+              <div className="note">
+                <span>{event.note}</span>
+                {event.link && <a className="event-link" href={event.link.href} target="_blank" rel="noreferrer">{event.link.label}<span aria-hidden="true">↗</span></a>}
+              </div>
             </article>
           ))}
         </div>

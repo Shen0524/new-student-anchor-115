@@ -40,6 +40,9 @@ button { font:inherit; }
 .meta { display:flex; gap:8px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
 .chip { background:#edf5f2; padding:5px 9px; border-radius:999px; }
 .note { max-width:280px; color:var(--muted); font-size:14px; line-height:1.65; border-left:1px solid var(--line); padding-left:20px; }
+.event-link { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:8px 12px; border-radius:10px; background:var(--green); color:white; font-weight:700; line-height:1.25; text-decoration:none; transition:transform .2s ease, background .2s ease; }
+.event-link:hover { background:var(--ink); transform:translateY(-1px); }
+.event-link:focus-visible { outline:3px solid rgba(22,123,102,.25); outline-offset:2px; }
 .category-global { --dot:var(--blue); } .category-community { --dot:var(--rose); } .category-career { --dot:var(--amber); } .category-break { --dot:#96a29e; }
 .legend { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:24px; color:var(--muted); font-size:13px; }
 .legend i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; background:var(--green); }
